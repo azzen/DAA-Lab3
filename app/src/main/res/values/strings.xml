@@ -79,5 +79,8 @@
 
     <string name="btn_cancel">@android:string/cancel</string>
     <string name="btn_ok">@android:string/ok</string>
+    
+    <string name="missing_fields">Veuillez remplir tous les champs</string>
+    <string name="success">La personne a bien été créée</string>
 
 </resources>

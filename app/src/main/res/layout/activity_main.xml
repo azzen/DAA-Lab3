@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".PersonController">
+
+<!--    Authors: Annen Rayane, Ducommun Hugo-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        tools:context=".MainActivity">
+        >
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -52,6 +55,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/main_base_name_title"
+            android:inputType="text"
+            android:nextFocusDown="@id/edit_main_base_firstname_title"
             app:layout_constraintStart_toEndOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/main_base_title"
@@ -75,6 +80,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/main_base_firstname_title"
+            android:inputType="text"
             app:layout_constraintStart_toEndOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_main_base_name_title"
@@ -132,6 +138,7 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:entries="@array/nationalities"
+            android:contentDescription="@string/nationality_empty"
             app:layout_constraintStart_toEndOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_main_base_birthday_title"
@@ -173,58 +180,73 @@
 
 <!--        Specific data-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/main_specific_student_title"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:text="@string/main_specific_students_title"-->
-<!--            android:textAllCaps="true"-->
-<!--            android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/radio_group_occupation" />-->
 
-<!--&lt;!&ndash;        School&ndash;&gt;-->
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_Student_Specific"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="main_specific_student_title,main_specific_school_title,edit_main_specific_school_title,main_specific_graduationyear_title,edit_main_specific_graduationyear_title,edit_main_specific_graduationyear_title" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/main_specific_school_title"-->
-<!--            android:layout_width="0dip"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/main_specific_school_title"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/main_specific_student_title"-->
-<!--            app:layout_constraintBottom_toBottomOf="@id/edit_main_specific_school_title"-->
-<!--            app:layout_constraintTop_toTopOf="@id/edit_main_specific_school_title" />-->
 
-<!--        <EditText-->
-<!--            android:id="@+id/edit_main_specific_school_title"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toEndOf="@id/guideline"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/main_specific_student_title"-->
-<!--            />-->
+        <TextView
+            android:id="@+id/main_specific_student_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/main_specific_students_title"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_occupation" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/main_specific_graduationyear_title"-->
-<!--            android:layout_width="0dip"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/main_specific_graduationyear_title"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/main_specific_school_title"-->
-<!--            app:layout_constraintTop_toTopOf="@id/edit_main_specific_graduationyear_title"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="@id/edit_main_specific_graduationyear_title"-->
-<!--            />-->
+<!--        School-->
 
-<!--        <EditText-->
-<!--            android:id="@+id/edit_main_specific_graduationyear_title"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toEndOf="@id/guideline"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/edit_main_specific_school_title"-->
-<!--            />-->
+        <TextView
+            android:id="@+id/main_specific_school_title"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="@string/main_specific_school_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_specific_student_title"
+            app:layout_constraintBottom_toBottomOf="@id/edit_main_specific_school_title"
+            app:layout_constraintTop_toTopOf="@id/edit_main_specific_school_title" />
+
+        <EditText
+            android:id="@+id/edit_main_specific_school_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_specific_student_title"
+            />
+
+        <TextView
+            android:id="@+id/main_specific_graduationyear_title"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="@string/main_specific_graduationyear_title"
+            app:layout_constraintTop_toBottomOf="@id/main_specific_school_title"
+            app:layout_constraintTop_toTopOf="@id/edit_main_specific_graduationyear_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/edit_main_specific_graduationyear_title"
+            />
+
+        <EditText
+            android:id="@+id/edit_main_specific_graduationyear_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_main_specific_school_title"
+            />
         <!--        Specific data employee -->
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_Worker_Specific"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="main_specific_worker_title,main_specific_company_title,edit_main_specific_compagny,main_specific_sector_title,spinner_main_specific_sector,main_specific_experience_title,edit_main_specific_experience_title," />
+
 
         <TextView
             android:id="@+id/main_specific_worker_title"
@@ -276,6 +298,7 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:entries="@array/sectors"
+            android:contentDescription="@string/sectors_empty"
             app:layout_constraintStart_toEndOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_main_specific_compagny"
@@ -301,6 +324,9 @@
             app:layout_constraintTop_toBottomOf="@id/spinner_main_specific_sector"
             />
 
+
+        <!--        Additionnal data -->
+        
         <TextView
             android:id="@+id/additional_title"
             android:layout_width="wrap_content"
@@ -346,7 +372,8 @@
             android:id="@+id/edit_additional_remark_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
+            android:inputType="textMultiLine|textAutoCorrect"
+            android:imeOptions="actionDone"
             android:gravity="start|top"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/additional_remarks_title"
